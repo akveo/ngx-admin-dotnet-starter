@@ -1,0 +1,34 @@
+<!--
+  ~ Copyright (c) Akveo 2019. All Rights Reserved.
+  ~ Licensed under the Single Application / Multi Application License.
+  ~ See LICENSE_SINGLE_APP / LICENSE_MULTI_APP in the 'docs' folder for license information on type of purchased license.
+  -->
+
+<nb-card size="large">
+  <nb-tabset fullWidth (changeTab)="changeTab($event)">
+    <nb-tab tabTitle="Orders" [active]="true">
+      <div class="chart-container">
+        <div [nbSpinner]="!ordersChartData" class="chart-container">
+          <ngx-chart-panel-summary [summary]="chartPanelSummary"></ngx-chart-panel-summary>
+          <ngx-chart-panel-header #ordersHeader [type]="period"
+                                  [legend]="ordersChartData?.legend"
+                                  (periodChange)="setPeriodAndGetChartData($event)">
+          </ngx-chart-panel-header>
+          <ngx-orders-chart #ordersChart *ngIf="ordersChartData" [ordersChartData]="ordersChartData"></ngx-orders-chart>
+        </div>
+      </div>
+    </nb-tab>
+    <nb-tab tabTitle="Profit" [lazyLoad]="true">
+      <div class="chart-container">
+        <div [nbSpinner]="!profitChartData" class="chart-container">
+          <ngx-chart-panel-summary [summary]="chartPanelSummary"></ngx-chart-panel-summary>
+          <ngx-chart-panel-header #profitHeader [type]="period"
+                                  [legend]="profitChartData?.legend"
+                                  (periodChange)="setPeriodAndGetChartData($event)">
+          </ngx-chart-panel-header>
+          <ngx-profit-chart #profitChart *ngIf="profitChartData" [profitChartData]="profitChartData"></ngx-profit-chart>
+        </div>
+      </div>
+    </nb-tab>
+  </nb-tabset>
+</nb-card>

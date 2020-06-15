@@ -1,0 +1,13 @@
+<!--
+  ~ Copyright (c) Akveo 2019. All Rights Reserved.
+  ~ Licensed under the Single Application / Multi Application License.
+  ~ See LICENSE_SINGLE_APP / LICENSE_MULTI_APP in the 'docs' folder for license information on type of purchased license.
+  -->
+
+<nb-card-header>
+  <i class="ion-social-usd"></i>
+  <span class="title">Profit</span>
+</nb-card-header>
+<nb-card-body [nbSpinner]="!chartData">
+  <ngx-stats-bar-animation-chart *ngIf="chartData" [lines]="chartData"></ngx-stats-bar-animation-chart>
+</nb-card-body>

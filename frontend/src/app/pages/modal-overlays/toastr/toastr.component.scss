@@ -1,0 +1,24 @@
+/*!
+ * Copyright (c) Akveo 2019. All Rights Reserved.
+ * Licensed under the Single Application / Multi Application License.
+ * See LICENSE_SINGLE_APP / LICENSE_MULTI_APP in the 'docs' folder for license information on type of purchased license.
+ */
+
+@import '../../../@theme/styles/themes';
+@import '~bootstrap/scss/mixins/breakpoints';
+@import '~@nebular/theme/styles/global/breakpoints';
+
+@include nb-install-component() {
+  .position-select {
+    min-width: 13rem;
+  }
+
+  .label {
+    display: block;
+  }
+
+  nb-card-footer button:first-child {
+    @include nb-ltr(margin-right, 1rem);
+    @include nb-rtl(margin-left, 1rem);
+  }
+}

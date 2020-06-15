@@ -1,0 +1,56 @@
+/*!
+ * Copyright (c) Akveo 2019. All Rights Reserved.
+ * Licensed under the Single Application / Multi Application License.
+ * See LICENSE_SINGLE_APP / LICENSE_MULTI_APP in the 'docs' folder for license information on type of purchased license.
+ */
+
+@import '~@nebular/theme/styles/global/breakpoints';
+
+:host {
+  $auth-layout-padding: 2.5rem;
+
+  nb-card {
+    margin: 0;
+    height: calc(100vh - 2 * #{$auth-layout-padding});
+  }
+
+  .navigation .link {
+    display: inline-block;
+    text-decoration: none;
+
+    nb-icon {
+      font-size: 2rem;
+      vertical-align: middle;
+    }
+  }
+
+  .links nb-icon {
+    font-size: 2.5rem;
+  }
+
+  nb-card-body {
+    display: flex;
+    width: 100%;
+  }
+
+  nb-auth-block {
+    margin: auto;
+  }
+
+  @include media-breakpoint-down(sm) {
+    nb-card {
+      border-radius: 0;
+      height: 100vh;
+    }
+  }
+
+  ::ng-deep {
+    nb-layout .layout .layout-container .content .columns nb-layout-column {
+      padding: $auth-layout-padding;
+
+      @include media-breakpoint-down(sm) {
+        padding: 0;
+      }
+    }
+  }
+}

@@ -1,0 +1,83 @@
+<!--
+  ~ Copyright (c) Akveo 2019. All Rights Reserved.
+  ~ Licensed under the Single Application / Multi Application License.
+  ~ See LICENSE_SINGLE_APP / LICENSE_MULTI_APP in the 'docs' folder for license information on type of purchased license.
+  -->
+
+<nb-card size="large">
+  <nb-tabset fullWidth>
+
+    <nb-tab tabTitle="Temperature" [nbSpinner]="!temperatureData">
+      <ng-container *ngIf="temperatureData">
+      <div class="slider-container">
+        <ngx-temperature-dragger [(value)]="temperatureData.value"
+                                 [off]="!temperatureDevice.isOn"
+                                 (valueChangeCompleted)="setTemperatureData()"
+                                 (powerChange)="powerTemperatureDevice($event)"
+                                 [min]="temperatureData.min" [max]="temperatureData.max" [disableArcColor]="theme.arcEmpty"
+                                 [fillColors]="theme.arcFill" [thumbBg]="theme.thumbBg" [thumbBorderColor]="theme.thumbBorder">
+
+          <div class="slider-value-container"  [ngClass]="{ 'off': !temperatureDevice.isOn }">
+            <div class="value temperature h1">
+              {{ !temperatureDevice.isOn ? '--' : (temperatureData.value | ngxRound) }}
+            </div>
+            <div class="desc">
+              Celsius
+            </div>
+          </div>
+        </ngx-temperature-dragger>
+      </div>
+
+      <nb-radio-group [(ngModel)]="temperatureMode.value" (ngModelChange)="setTemperatureMode()" name="temperature-mode">
+        <nb-radio value="cool">
+          <i class="nb-snowy-circled"></i>
+        </nb-radio>
+        <nb-radio value="warm">
+          <i class="nb-sunny-circled"></i>
+        </nb-radio>
+        <nb-radio value="heat">
+          <i class="nb-flame-circled"></i>
+        </nb-radio>
+        <nb-radio value="fan">
+          <i class="nb-loop-circled"></i>
+        </nb-radio>
+      </nb-radio-group>
+      </ng-container>
+    </nb-tab>
+
+    <nb-tab tabTitle="Humidity" [nbSpinner]="!humidityData">
+      <ng-container *ngIf="humidityData">
+      <div class="slider-container">
+        <ngx-temperature-dragger [(value)]="humidityData.value"
+                                 [off]="!humidityDevice.isOn"
+                                 (powerChange)="powerHumidityDevice($event)"
+                                 (valueChangeCompleted)="setHumidityData()"
+                                 [min]="humidityData.min" [max]="humidityData.max" [disableArcColor]="theme.arcEmpty"
+                                 [fillColors]="theme.arcFill" [thumbBg]="theme.thumbBg" [thumbBorderColor]="theme.thumbBorder">
+
+          <div class="slider-value-container"  [ngClass]="{ 'off': !humidityDevice.isOn }">
+            <div class="value humidity h1">
+              {{ !humidityDevice.isOn ? '--' : (humidityData.value | ngxRound) }}
+            </div>
+          </div>
+        </ngx-temperature-dragger>
+      </div>
+
+      <nb-radio-group [(ngModel)]="humidityMode.value" (ngModelChange)="setHumidityMode()" name="humidity-mode">
+        <nb-radio value="cool">
+          <i class="nb-snowy-circled"></i>
+        </nb-radio>
+        <nb-radio value="warm">
+          <i class="nb-sunny-circled"></i>
+        </nb-radio>
+        <nb-radio value="heat">
+          <i class="nb-flame-circled"></i>
+        </nb-radio>
+        <nb-radio value="fan">
+          <i class="nb-loop-circled"></i>
+        </nb-radio>
+      </nb-radio-group>
+      </ng-container>
+    </nb-tab>
+  </nb-tabset>
+</nb-card>

@@ -1,0 +1,94 @@
+<!--
+  ~ Copyright (c) Akveo 2019. All Rights Reserved.
+  ~ Licensed under the Single Application / Multi Application License.
+  ~ See LICENSE_SINGLE_APP / LICENSE_MULTI_APP in the 'docs' folder for license information on type of purchased license.
+  -->
+
+<h1 id="title" class="title">Login</h1>
+<p class="sub-title">Hello! Log in with your email.</p>
+
+<nb-alert *ngIf="showMessages.error && errors?.length && !submitted" outline="danger" role="alert">
+  <p class="alert-title"><b>Oh snap!</b></p>
+  <ul class="alert-message-list">
+    <li *ngFor="let error of errors" class="alert-message">{{ error }}</li>
+  </ul>
+</nb-alert>
+
+<nb-alert *ngIf="showMessages.success && messages?.length && !submitted" outline="success" role="alert">
+  <p class="alert-title"><b>Hooray!</b></p>
+  <ul class="alert-message-list">
+    <li *ngFor="let message of messages" class="alert-message">{{ message }}</li>
+  </ul>
+</nb-alert>
+
+<div [formGroup]="loginForm" aria-labelledby="title">
+  <div class="form-control-group">
+    <label for="input-email">Email address:</label>
+    <input  nbInput
+            fullWidth
+            id="input-email"
+            formControlName="email"
+            [status]="email.dirty ? (email.invalid  ? 'danger' : 'success') : ''"
+            [attr.aria-invalid]="email.invalid && email.touched ? true : null"
+            placeholder="Email address">
+    <ngx-validation-message label="Email address" [showPattern]="email?.hasError('pattern') && email.touched"
+      [showRequired]="email?.errors?.required && email.touched"></ngx-validation-message>
+  </div>
+
+  <div class="form-control-group">
+    <span class="label-with-link">
+      <label class="label" for="input-password">Password:</label>
+      <a class="forgot-password caption-2" routerLink="../request-password">Forgot Password?</a>
+    </span>
+    <input  nbInput
+            fullWidth
+            id="input-password"
+            formControlName="password"
+            type="password"
+            [status]="password.dirty ? (password.invalid  ? 'danger' : 'success') : ''"
+            placeholder="Password">
+    <ngx-validation-message label="Password" [showMinLength]="password?.hasError('minlength') && password.touched"
+      [showMaxLength]="password?.hasError('maxlength') && password.touched"
+      [showRequired]="password?.errors?.required && password.touched"
+      [minLength]="minLength"
+      [maxLength]="maxLength"></ngx-validation-message>
+  </div>
+
+  <div class="form-control-group accept-group">
+    <nb-checkbox formControlName="rememberMe" name="rememberMe" *ngIf="rememberMe">Remember me</nb-checkbox>
+  </div>
+
+  <button nbButton fullWidth status="primary" size="large"
+   (click)="login()" [disabled]="submitted || !loginForm.valid"
+    [class.btn-pulse]="submitted">
+    Log In
+  </button>
+</div>
+
+<section *ngIf="socialLinks && socialLinks.length > 0" class="links" aria-label="Social sign in">
+  or enter with:
+  <div class="socials">
+    <ng-container *ngFor="let socialLink of socialLinks">
+      <a *ngIf="socialLink.link"
+         [routerLink]="socialLink.link"
+         [attr.target]="socialLink.target"
+         [attr.class]="socialLink.icon"
+         [class.with-icon]="socialLink.icon">
+        <nb-icon *ngIf="socialLink.icon; else title" [icon]="socialLink.icon"></nb-icon>
+        <ng-template #title>{{ socialLink.title }}</ng-template>
+      </a>
+      <a *ngIf="socialLink.url"
+         [attr.href]="socialLink.url"
+         [attr.target]="socialLink.target"
+         [attr.class]="socialLink.icon"
+         [class.with-icon]="socialLink.icon">
+        <nb-icon *ngIf="socialLink.icon; else title" [icon]="socialLink.icon"></nb-icon>
+        <ng-template #title>{{ socialLink.title }}</ng-template>
+      </a>
+    </ng-container>
+  </div>
+</section>
+
+<section class="another-action" aria-label="Register">
+  Don't have an account? <a class="text-link" routerLink="../register">Register</a>
+</section>

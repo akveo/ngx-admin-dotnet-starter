@@ -1,0 +1,15 @@
+<!--
+  ~ Copyright (c) Akveo 2019. All Rights Reserved.
+  ~ Licensed under the Single Application / Multi Application License.
+  ~ See LICENSE_SINGLE_APP / LICENSE_MULTI_APP in the 'docs' folder for license information on type of purchased license.
+  -->
+
+<span class="value-prev caption">{{ barData.prevDate }}</span>
+<div class="progress-line-container" [style.height.%]="barData.prevValue">
+  <div class="progress-line-prev"></div>
+</div>
+<div class="progress-line-container" [style.height.%]="barData.nextValue">
+  <div class="progress-line-now" [class.success]="successDelta" [class.failure]="!successDelta">
+  </div>
+</div>
+<span class="value-now caption">{{ barData.nextDate }}</span>

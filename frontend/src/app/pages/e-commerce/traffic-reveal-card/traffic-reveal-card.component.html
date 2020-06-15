@@ -1,0 +1,22 @@
+<!--
+  ~ Copyright (c) Akveo 2019. All Rights Reserved.
+  ~ Licensed under the Single Application / Multi Application License.
+  ~ See LICENSE_SINGLE_APP / LICENSE_MULTI_APP in the 'docs' folder for license information on type of purchased license.
+  -->
+
+<nb-reveal-card [showToggleButton]="false" [revealed]="revealed">
+  <nb-card-front>
+    <nb-card size="small" [nbSpinner]="!trafficListData">
+      <ngx-traffic-cards-header [type]="period" (periodChange)="setPeriodAngGetData($event)"></ngx-traffic-cards-header>
+      <ngx-traffic-front-card *ngIf="trafficListData" [frontCardData]="trafficListData"></ngx-traffic-front-card>
+      <nb-icon class="toggle-icon" icon="chevron-up-outline" pack="eva" (click)="toggleView()"></nb-icon>
+    </nb-card>
+  </nb-card-front>
+  <nb-card-back>
+    <nb-card size="small" [nbSpinner]="!trafficBarData">
+      <ngx-traffic-cards-header [type]="period" (periodChange)="setPeriodAngGetData($event)"></ngx-traffic-cards-header>
+      <ngx-traffic-back-card *ngIf="trafficBarData" [trafficBarData]="trafficBarData"></ngx-traffic-back-card>
+      <nb-icon class="toggle-icon" icon="chevron-down-outline" pack="eva" (click)="toggleView()"></nb-icon>
+    </nb-card>
+  </nb-card-back>
+</nb-reveal-card>

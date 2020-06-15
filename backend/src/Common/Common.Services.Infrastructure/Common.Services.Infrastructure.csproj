@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="8.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Common.DTO\Common.DTO.csproj" ReferenceOutputAssembly="true" />
+    <ProjectReference Include="..\Common.Entities\Common.Entities.csproj" ReferenceOutputAssembly="true" />
+  </ItemGroup>
+
+</Project>

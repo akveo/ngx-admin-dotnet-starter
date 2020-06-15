@@ -1,0 +1,20 @@
+<!--
+  ~ Copyright (c) Akveo 2019. All Rights Reserved.
+  ~ Licensed under the Single Application / Multi Application License.
+  ~ See LICENSE_SINGLE_APP / LICENSE_MULTI_APP in the 'docs' folder for license information on type of purchased license.
+  -->
+
+<nb-card-header>
+  Earnings
+</nb-card-header>
+<nb-card-body>
+  <div class="chart-info">
+    <div [style.color]="color">{{ name }}</div>
+    <div class="time-period caption">Last week:</div>
+    <div class="h6">{{ value }}%</div>
+  </div>
+  <ngx-earning-pie-chart [values]="earningPieChartData"
+                         (selectPie)="changeChartInfo($event)"
+                         [defaultSelectedCurrency]="defaultSelectedCurrency">
+  </ngx-earning-pie-chart>
+</nb-card-body>

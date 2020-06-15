@@ -1,0 +1,32 @@
+/*!
+ * Copyright (c) Akveo 2019. All Rights Reserved.
+ * Licensed under the Single Application / Multi Application License.
+ * See LICENSE_SINGLE_APP / LICENSE_MULTI_APP in the 'docs' folder for license information on type of purchased license.
+ */
+
+nb-card-body {
+  overflow: visible;
+  padding-top: 0;
+
+  > * {
+    margin-top: 1rem;
+  }
+}
+
+.full-name-inputs,
+.validation-checkboxes {
+  display: flex;
+  margin: 0 -0.5rem;
+
+  > * {
+    margin: 0 0.5rem;
+  }
+}
+
+.checkbox-radio {
+  display: flex;
+}
+
+.demo-items {
+  flex: 1 0 33%;
+}

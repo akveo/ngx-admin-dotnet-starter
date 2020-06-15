@@ -1,0 +1,90 @@
+<!--
+  ~ Copyright (c) Akveo 2019. All Rights Reserved.
+  ~ Licensed under the Single Application / Multi Application License.
+  ~ See LICENSE_SINGLE_APP / LICENSE_MULTI_APP in the 'docs' folder for license information on type of purchased license.
+  -->
+
+<nb-card>
+  <nb-card-header>{{mode}} user</nb-card-header>
+  <nb-card-body>
+    <div [formGroup]="userForm" class="container">
+      <div class="form-group">
+        <label for="firstName">First Name</label>
+        <input nbInput id="firstName" formControlName="firstName"
+               [status]="(firstName?.hasError('minlength') || firstName?.hasError('maxlength')) ? 'danger' : 'primary'"
+               class="form-control" placeholder="Last Name">
+        <ngx-validation-message label="First Name"
+                                [showMinLength]="firstName?.hasError('minlength')"
+                                [showMaxLength]="firstName?.hasError('maxlength')" minLength=3
+                                maxLength=20></ngx-validation-message>
+      </div>
+
+      <div class="form-group">
+        <label for="lastName">Last Name</label>
+        <input nbInput id="lastName" formControlName="lastName"
+               [status]="(lastName?.hasError('minlength') || lastName?.hasError('maxlength')) ? 'danger' : 'primary'"
+               class="form-control" placeholder="Last Name">
+        <ngx-validation-message label="Last Name"
+                                [showMinLength]="lastName?.hasError('minlength')"
+                                [showMaxLength]="lastName?.hasError('maxlength')" minLength=3
+                                maxLength=20></ngx-validation-message>
+      </div>
+
+      <div class="form-group">
+        <label for="inputLogin">Login</label>
+        <input nbInput id="inputLogin" formControlName="login"
+               [status]="(login?.errors?.required || login?.hasError('minlength') || login?.hasError('maxlength')) && login.touched ? 'danger' : 'primary'"
+               class="form-control" placeholder="Login">
+        <ngx-validation-message label="Login"
+                                [showMinLength]="login?.hasError('minlength')"
+                                [showMaxLength]="login?.hasError('maxlength')"
+                                [showRequired]="login?.errors?.required && login.touched"
+                                minLength=6
+                                maxLength=20></ngx-validation-message>
+      </div>
+
+      <div class="form-group">
+        <label for="inputAge">Age</label>
+        <input nbInput id="inputAge" formControlName="age"
+               [status]="(age?.errors?.required || age?.errors?.min || age?.errors?.max || age?.hasError('pattern')) && age.touched? 'danger' : 'primary'"
+               class="form-control" placeholder="Age">
+        <ngx-validation-message label="Age"
+                                [showMin]="age?.errors?.min && age.touched"
+                                [showMax]="age?.errors?.max && age.touched"
+                                [showRequired]="age?.errors?.required && age.touched"
+                                [showPattern]="age?.hasError('pattern')" min=1 max=120></ngx-validation-message>
+      </div>
+
+      <div class="form-group">
+        <label for="inputEmail">Email</label>
+        <input nbInput id="inputEmail" formControlName="email"
+               [status]="(email?.errors?.required || email?.hasError('pattern')) && email.touched ? 'danger' : 'primary'"
+               class="form-control"
+               placeholder="Email">
+        <ngx-validation-message label="Email"
+                                [showPattern]="email?.hasError('pattern') && email.touched"
+                                [showRequired]="email?.errors?.required && email.touched" min=1 max=120></ngx-validation-message>
+      </div>
+
+      <div class="form-group" formGroupName="address">
+        <label for="inputStreet">Street</label>
+        <input nbInput class="form-control" id="inputStreet" placeholder="Street" formControlName="street">
+      </div>
+
+      <div class="form-group" formGroupName="address">
+        <label for="inputCity">City</label>
+        <input nbInput class="form-control" id="inputCity" placeholder="City" formControlName="city">
+      </div>
+
+      <div class="form-group" formGroupName="address">
+        <label for="inputZipCode">Zip Code</label>
+        <input nbInput class="form-control" id="inputZipCode" placeholder="Zip Code" formControlName="zipCode">
+      </div>
+    </div>
+  </nb-card-body>
+  <nb-card-footer>
+    <button nbButton status="primary" [disabled]="!userForm.valid" (click)="save()" hero>Submit</button>
+    <button nbButton status="info" (click)="back()" hero>Back</button>
+  </nb-card-footer>
+</nb-card>
+

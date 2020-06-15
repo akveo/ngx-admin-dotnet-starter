@@ -1,0 +1,13 @@
+<!--
+  ~ Copyright (c) Akveo 2019. All Rights Reserved.
+  ~ Licensed under the Single Application / Multi Application License.
+  ~ See LICENSE_SINGLE_APP / LICENSE_MULTI_APP in the 'docs' folder for license information on type of purchased license.
+  -->
+
+<ngx-legend-chart [legendItems]="chartLegend"></ngx-legend-chart>
+
+<nb-select class="period-select" [selected]="type" (selectedChange)="changePeriod($event)">
+  <nb-option *ngFor="let period of types" [value]="period">
+    {{ period }}
+  </nb-option>
+</nb-select>

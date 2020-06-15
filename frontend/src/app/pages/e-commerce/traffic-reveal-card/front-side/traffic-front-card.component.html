@@ -1,0 +1,18 @@
+<!--
+  ~ Copyright (c) Akveo 2019. All Rights Reserved.
+  ~ Licensed under the Single Application / Multi Application License.
+  ~ See LICENSE_SINGLE_APP / LICENSE_MULTI_APP in the 'docs' folder for license information on type of purchased license.
+  -->
+
+<nb-list>
+  <nb-list-item class="item" *ngFor="let item of frontCardData; trackBy: trackByDate">
+    <span>{{ item.date }}</span>
+    <span>{{ item.value }}</span>
+    <span class="delta" [class.up]="item.delta.up" [class.down]="!item.delta.up">
+      <nb-icon [icon]="item.delta.up ? 'arrow-up' : 'arrow-down'" pack="eva"></nb-icon>
+      {{ item.delta.value }}%
+    </span>
+    <ngx-traffic-bar [barData]="item.comparison" [successDelta]="item.delta.up">
+    </ngx-traffic-bar>
+  </nb-list-item>
+</nb-list>

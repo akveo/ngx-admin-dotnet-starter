@@ -1,0 +1,16 @@
+<!--
+  ~ Copyright (c) Akveo 2019. All Rights Reserved.
+  ~ Licensed under the Single Application / Multi Application License.
+  ~ See LICENSE_SINGLE_APP / LICENSE_MULTI_APP in the 'docs' folder for license information on type of purchased license.
+  -->
+
+<nb-card>
+  <nb-card-header>Enter your name</nb-card-header>
+  <nb-card-body>
+    <input #name nbInput placeholder="Name">
+  </nb-card-body>
+  <nb-card-footer>
+    <button class="cancel" nbButton status="danger" (click)="cancel()">Cancel</button>
+    <button nbButton status="success" (click)="submit(name.value)">Submit</button>
+  </nb-card-footer>
+</nb-card>

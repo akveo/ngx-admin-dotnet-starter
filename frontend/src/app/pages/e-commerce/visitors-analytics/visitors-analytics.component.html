@@ -1,0 +1,24 @@
+<!--
+  ~ Copyright (c) Akveo 2019. All Rights Reserved.
+  ~ Licensed under the Single Application / Multi Application License.
+  ~ See LICENSE_SINGLE_APP / LICENSE_MULTI_APP in the 'docs' folder for license information on type of purchased license.
+  -->
+
+<nb-card size="medium">
+  <nb-card-header>
+    <h3>Visitors Analytics</h3>
+    <div class="subtitle">Consumption</div>
+  </nb-card-header>
+  <nb-card-body>
+    <div class="chart-container">
+      <div class="chart-header">
+        <ngx-legend-chart [legendItems]="chartLegend"></ngx-legend-chart>
+      </div>
+      <ngx-visitors-analytics-chart [chartData]="visitorsAnalyticsData"></ngx-visitors-analytics-chart>
+    </div>
+  </nb-card-body>
+
+  <ngx-slide-out [showVisitorsStatistics]="true">
+    <ngx-visitors-statistics [value]="pieChartValue"></ngx-visitors-statistics>
+  </ngx-slide-out>
+</nb-card>

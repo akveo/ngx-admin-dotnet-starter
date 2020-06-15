@@ -1,0 +1,20 @@
+<!--
+  ~ Copyright (c) Akveo 2019. All Rights Reserved.
+  ~ Licensed under the Single Application / Multi Application License.
+  ~ See LICENSE_SINGLE_APP / LICENSE_MULTI_APP in the 'docs' folder for license information on type of purchased license.
+  -->
+
+<nb-card>
+  <nb-card-header>Progress Bar Interactive</nb-card-header>
+  <nb-card-body>
+    <div class="container">
+      <button nbButton appearance="ghost" [disabled]="canDecrease ? null : ''" (click)="decreaseValue()">
+        <nb-icon icon="minus" pack="eva"></nb-icon>
+      </button>
+      <nb-progress-bar [value]="value" [status]="status" [displayValue]="true"></nb-progress-bar>
+      <button nbButton appearance="ghost" [disabled]="canIncrease ? null : ''" (click)="increaseValue()">
+        <nb-icon icon="plus" pack="eva"></nb-icon>
+      </button>
+    </div>
+  </nb-card-body>
+</nb-card>

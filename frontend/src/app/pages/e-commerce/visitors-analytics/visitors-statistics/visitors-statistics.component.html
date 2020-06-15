@@ -1,0 +1,24 @@
+<!--
+  ~ Copyright (c) Akveo 2019. All Rights Reserved.
+  ~ Licensed under the Single Application / Multi Application License.
+  ~ See LICENSE_SINGLE_APP / LICENSE_MULTI_APP in the 'docs' folder for license information on type of purchased license.
+  -->
+
+<div class="visitors-statistics">
+  <h4 class="h1">1,100</h4>
+  <div class="visitors-title">New Visitors</div>
+  <div class="statistics-chart">
+    <div echarts
+         [options]="option"
+         class="echart"
+         (chartInit)="onChartInit($event)">
+    </div>
+  </div>
+  <div class="statistics-footer">
+    <div class="chart-values h5">
+      <span class="chart-value">25%</span>
+      <span class="chart-value">75%</span>
+    </div>
+    <ngx-legend-chart class="visitors-statistics-legend" [legendItems]="chartLegend"></ngx-legend-chart>
+  </div>
+</div>

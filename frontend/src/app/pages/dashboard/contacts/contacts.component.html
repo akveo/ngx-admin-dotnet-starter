@@ -1,0 +1,29 @@
+<!--
+  ~ Copyright (c) Akveo 2019. All Rights Reserved.
+  ~ Licensed under the Single Application / Multi Application License.
+  ~ See LICENSE_SINGLE_APP / LICENSE_MULTI_APP in the 'docs' folder for license information on type of purchased license.
+  -->
+
+<nb-card size="giant">
+  <nb-tabset fullWidth>
+
+    <nb-tab tabTitle="Contacts" [nbSpinner]="!contacts">
+      <nb-list>
+        <nb-list-item class="contact" *ngFor="let c of contacts">
+          <nb-user [picture]="c.picture | ngxAuthToken | async" [name]="c.name" [title]="c.type" size="large"></nb-user>
+          <nb-icon icon="phone-outline" pack="eva"></nb-icon>
+        </nb-list-item>
+      </nb-list>
+    </nb-tab>
+
+    <nb-tab tabTitle="Recent">
+      <nb-list>
+        <nb-list-item class="contact" *ngFor="let c of recent">
+          <nb-user [picture]="c.picture | ngxAuthToken | async" [name]="c.name" [title]="c.type" size="large"></nb-user>
+          <span class="caption">{{ c.time | date: 'shortTime' }}</span>
+        </nb-list-item>
+      </nb-list>
+    </nb-tab>
+
+  </nb-tabset>
+</nb-card>

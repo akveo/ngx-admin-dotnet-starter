@@ -1,0 +1,23 @@
+<!--
+  ~ Copyright (c) Akveo 2019. All Rights Reserved.
+  ~ Licensed under the Single Application / Multi Application License.
+  ~ See LICENSE_SINGLE_APP / LICENSE_MULTI_APP in the 'docs' folder for license information on type of purchased license.
+  -->
+
+<nb-card-header>
+  <i class="ion-social-usd"></i>
+  <span class="title">Profit</span>
+</nb-card-header>
+<nb-card-body [nbSpinner]="!chartData">
+  <div class="info">
+    <ng-container *ngFor="let label of labels; let isLast = last">
+      <div class="period {{ isLast ? 'latest' : '' }}">
+        <div class="caption">{{ label.title }}</div>
+        <div class="label">
+          <span class="currency">{{ currency }}</span>{{ label.value }}
+        </div>
+      </div>
+    </ng-container>
+  </div>
+  <ngx-stats-ares-chart *ngIf="chartData" [points]="chartData"></ngx-stats-ares-chart>
+</nb-card-body>

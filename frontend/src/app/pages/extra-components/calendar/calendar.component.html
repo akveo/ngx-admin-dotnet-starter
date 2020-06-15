@@ -1,0 +1,30 @@
+<!--
+  ~ Copyright (c) Akveo 2019. All Rights Reserved.
+  ~ Licensed under the Single Application / Multi Application License.
+  ~ See LICENSE_SINGLE_APP / LICENSE_MULTI_APP in the 'docs' folder for license information on type of purchased license.
+  -->
+
+<div class="calendars">
+  <div class="calendar-container">
+    <span class="subtitle">
+      Selected date: {{ date | date }}
+    </span>
+    <nb-calendar [(date)]="date" [boundingMonth]="true"></nb-calendar>
+  </div>
+  <div class="calendar-container">
+    <span class="subtitle">
+      Selected range: {{ range.start | date }} - {{ range.end | date }}
+    </span>
+    <nb-calendar-range [(range)]="range"></nb-calendar-range>
+  </div>
+  <div class="calendar-container">
+    <span class="subtitle">
+      Selected date: {{ date2 | date }}
+    </span>
+    <nb-calendar
+      [(date)]="date2"
+      [dayCellComponent]="dayCellComponent"
+    ></nb-calendar>
+  </div>
+</div>
+
