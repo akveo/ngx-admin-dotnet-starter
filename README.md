@@ -1,4 +1,4 @@
-# Angular 9 ngx-admin .NET Starter dashboard 
+# Angular 10 ngx-admin .NET Starter dashboard 
 
 [Documentation](https://hubs.ly/H0rh0xp0)
 
